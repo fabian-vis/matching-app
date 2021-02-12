@@ -4,18 +4,22 @@ const port = 8000
 
 app.use(express.static('static'))
 
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.render('pages/home.ejs')
 })
 
-app.get('/test', (req, res) => {
-    res.send('testpagina')
+app.get('/home', (req, res) => {
+    res.render('pages/home.ejs')
   })
 
 app.get('*', (req, res) => {
-  res.send('error 404');
+  res.render('error 404');
 });
 
 app.listen(port, () => {
   console.log(`Server opgestart at http://localhost:${port}`)
 })
+
+
