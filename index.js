@@ -14,8 +14,12 @@ app.get('/home', (req, res) => {
     res.render('pages/home.ejs')
   })
 
+  app.get('/liked', (req, res) => {
+    res.render('pages/liked.ejs')
+  })
+
 app.get('*', (req, res) => {
-  res.render('error 404');
+  res.render('pages/error.ejs');
 });
 
 app.listen(port, () => {
