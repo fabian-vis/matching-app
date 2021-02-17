@@ -5,21 +5,18 @@ const port = 8000
 app.use(express.static('static'))
 
 app.set('view engine', 'ejs');
+app.set('views', 'views')
 
 app.get('/', (req, res) => {
-  res.render('pages/home.ejs')
+  res.render('pages/home.ejs', {profiel : {voornaam: "Fabian", achternaam:"Vis"}})
 })
 
-app.get('/home', (req, res) => {
-    res.render('pages/home.ejs')
-  })
-
   app.get('/liked', (req, res) => {
-    res.render('pages/liked.ejs')
+    res.render('pages/liked.ejs', {profiel : {voornaam: "Fabian", achternaam:"Vis"}})
   })
 
-app.get('*', (req, res) => {
-  res.render('pages/error.ejs');
+app.use(function (req, res, next) {
+  res.status(404).send("Error 404")
 });
 
 app.listen(port, () => {

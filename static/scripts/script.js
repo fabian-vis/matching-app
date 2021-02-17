@@ -1,5 +1,5 @@
 $(function() {
-    $( "i" ).click(function() {
-      $( "i" ).toggleClass( "press", 1000 );
-    });
+  $( "i" ).click(function() {
+    $( "i,span" ).toggleClass( "press", 1000 );
   });
+});
