@@ -1,39 +1,64 @@
+require("dotenv").config();
 const express = require('express')
-const app = express()
 const port = 8000
 const bodyParser = require("body-parser")
+const mongoose = require("mongoose");
+const path = require("path");
 
-app.use(bodyParser.urlencoded({extended: true}))
-app.use(express.static('static'))
+const { MONGO_USER, MONGO_PASS, MONGO_URI, MONGO_DB } = process.env;
 
-app.set('view engine', 'ejs');
-app.set('views', 'views')
+let persoon = {
+  voornaam: "Fabian", achternaam:"Vis", liked:[]
+}
 
- app.get('/', (req, res) => {
-  res.render('pages/home.ejs', {profiel : {voornaam: "Fabian", achternaam:"Vis"}})
-})
+main();
+
+function main() {
+  mongoose
+    .connect(`mongodb+srv://${MONGO_USER}:${MONGO_PASS}@${MONGO_URI}/${MONGO_DB}?retryWrites=true&w=majority`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then((connection) => {
+      const app = express();
+      app.set("view engine", "ejs");
+      app.set("views", path.join(__dirname, "views"));
+      app.use(bodyParser.urlencoded({extended: true}))
+      app.use(express.static('static'))
+      
+
+      app.get('/', (req, res) => {
+        res.render('pages/home.ejs', {profiel:persoon})
+      })
+    
+    
+      app.get('/liked', (req, res) => {
+          res.render('pages/liked.ejs', {profiel:persoon})
+        })
+    
+      app.post('/liked', (req, res) => {
+        if (typeof req.body.personen === "string") {
+          persoon.liked.push(req.body.personen)
+        }
+        else {
+          persoon.liked = persoon.liked.concat(req.body.personen)
+        }
+        res.redirect('/')
+          
+      })
+    
+
+      
+      app.use(function (req, res, next) {
+        res.status(404).send("Error 404")
+      });
+      
+      app.listen(port,function(){console.log(port)});
+    });
+}
 
 
-app.get('/liked', (req, res) => {
-    res.render('pages/liked.ejs', {profiel : {voornaam: "Fabian", achternaam:"Vis"}})
-  })
 
-  app.get("/getemail", function (request, response){
-    var firstname = request.query.firstname;
 
-    if (firstname != "") {
-        response.send("Your email address is " + firstname + "@gmail.com");
-    } else {
-        response.send("Please provide us first name");
-    }
-});
-
-app.use(function (req, res, next) {
-  res.status(404).send("Error 404")
-});
-
-app.listen(port, () => {
-  console.log(`Server opgestart at http://localhost:${port}`)
-})
 
 
