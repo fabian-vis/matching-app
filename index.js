@@ -48,12 +48,14 @@ function main() {
       })
     
 
-      
+
       app.use(function (req, res, next) {
         res.status(404).send("Error 404")
       });
       
-      app.listen(port,function(){console.log(port)});
+      
+      app.listen(port, () => {
+        console.log(`Server opgestart at http://localhost:${port}`)})
     });
 }
 
