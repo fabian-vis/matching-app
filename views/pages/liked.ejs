@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../partials/head');%>
+    <%- include('../partials/head2');%>
 </head>
 <body>
 
@@ -16,25 +16,16 @@
             <h3>Filter</h3>
         </section> 
         <section>
-            <div class="profielstyling">
-                <img src="../img/fabian.jpeg" class="profielfoto" alt="Profielfoto van fabian vis"/>
-                    <div class="naamSysteem">
-                        <h1>Fabian Vis</h1>
-                        <p>Shooters/MMO</p>
-                        <img src="../img/xbox.png" alt="Profielfoto van fabian vis"/>
-                    </div>
-                <div class="buttons">
-                    <button class="profilebutton">View profile</button>
-                    <button class="removebutton">Remove</button>
-                </div>
-            </div>
+            <h1>Hier komen de namen</h1>
+            <button>remove?</button>
         </section>  
             
         <section>
             <ul>
-                <% profiel.liked.forEach(function(persoon) { %>
+                <% personen.forEach(function(persoon) { %>
                 <li>
-                <%= persoon %>
+                    <%= persoon.persoon %>
+                    <button data-id="<%=persoon._id%>">Verwijder</button>
                 </li>
                 <% });%>
             </ul>

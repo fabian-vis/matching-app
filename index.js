@@ -3,6 +3,7 @@ const express = require('express')
 const port = 8000
 const bodyParser = require("body-parser")
 const MongoClient = require('mongodb').MongoClient
+const ObjectID = require('mongodb').ObjectID
 const path = require("path");
 
 const { MONGO_USER, MONGO_PASS, MONGO_URI, MONGO_DB } = process.env;
@@ -35,26 +36,38 @@ function main() {
         res.render('pages/home.ejs', {profiel:persoon})
       })
     
-      app.get('/liked', (req, res) => {
-        res.render('pages/liked.ejs', {profiel:persoon})
-      })
+      // app.get('/liked', (req, res) => {
+      //   res.render('pages/liked.ejs', {profiel:persoon})
+      // })
 
       app.get('/liked', (req, res) => {
         db.collection('personen').find().toArray()
-          .then(results => {
-            res.render('pages/liked.ejs', {persoon: results})
+        .then(results => {
+          res.render('pages/liked.ejs', {
+            personen: results,
+            profiel: persoon,
           })
-          .catch(/* ... */)
+        })
       })
     
      
-    
+    // als er op de submit button word geklikt worden de geselecteerde personen naar de database gestuurd.
       app.post('/liked', (req, res) => {
-        personenCollection.insertOne(req.body)
-        .then(result => {
-          res.redirect('/')
+        let likes;
+        if (typeof req.body.personen === "string") {
+          likes = [req.body.personen]
+        }
+        else {
+          likes = req.body.personen
+        }
+        const promises = likes.map( like => {
+          return personenCollection.insertOne({persoon:like})
         })
-        .catch(error => console.error(error))
+        Promise.all(promises) 
+          .then(results => {
+              res.redirect('/')
+            })
+            .catch(error => console.error(error))
     })
 
     app.get('/', (req, res) => {
@@ -65,6 +78,16 @@ function main() {
         .catch(error => console.error(error))
       // ...
     })
+
+    app.delete('/delete', (req, res) => {
+      // Maakt van de query string een officeel mongodb object id, anders verwijdert mongodb de persoon niet
+      db.collection('personen').deleteOne({"_id":new ObjectID(req.query.id)})
+      .then((result) => {
+        console.log(result)
+        res.send('Gelukt')
+      })
+    })
+
     
 
       app.use(function (req, res, next) {
