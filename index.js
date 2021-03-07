@@ -35,10 +35,6 @@ function main() {
       app.get('/', (req, res) => {
         res.render('pages/home.ejs', {profiel:persoon})
       })
-    
-      // app.get('/liked', (req, res) => {
-      //   res.render('pages/liked.ejs', {profiel:persoon})
-      // })
 
       app.get('/liked', (req, res) => {
         db.collection('personen').find().toArray()

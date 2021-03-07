@@ -37,14 +37,14 @@ main {
     height: 100vh;
 }
 
-main section:first-of-type h2{
+main section:first-of-type h2 {
     font-family: 'Montserrat', sans-serif;
     color: white;
     font-size: 1.3em;
     text-align: center; 
 }
 
-main section:first-of-type h1{
+main section:first-of-type h1 {
   font-family: 'Audiowide', cursive;
   text-transform: uppercase;
   color: white;
@@ -52,21 +52,58 @@ main section:first-of-type h1{
   text-align: center;
 }
 
-main section:first-of-type h3{
+main section:first-of-type h3 {
   font-family: 'Audiowide', cursive;
   color: white;
   font-size: 1em;
   text-align: center;
 }
 
-main section:nth-of-type(2) h1{
+main section:nth-of-type(2)  {
+}
+main section:nth-of-type(2) h1 {
   font-family: 'Audiowide', cursive;
   color: white;
-  font-size: 1em;
+  font-size: 1.1em;
   text-align: center;
-  
+  margin: auto;
 
 }
+main section:nth-of-type(2) ul { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 0;
+}
+
+main section:nth-of-type(2) li {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  border-radius: 25px;
+  width: 150px;
+  height: 13vh;
+  margin-bottom: 2em;
+}
+
+main section:nth-of-type(2) button { 
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 7.5px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin: auto;
+    font-family: 'Audiowide', cursive;
+    text-transform: uppercase; 
+}
+
+
   
   /* footer styling */
   footer {

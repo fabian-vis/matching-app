@@ -37,14 +37,14 @@ main {
     height: 100vh;
 }
 
-main section:first-of-type h2{
+main section:first-of-type h2 {
     font-family: 'Montserrat', sans-serif;
     color: white;
     font-size: 1.3em;
     text-align: center; 
 }
 
-main section:first-of-type h1{
+main section:first-of-type h1 {
   font-family: 'Audiowide', cursive;
   text-transform: uppercase;
   color: white;
@@ -52,7 +52,7 @@ main section:first-of-type h1{
   text-align: center;
 }
 
-main section:first-of-type h3{
+main section:first-of-type h3 {
   font-family: 'Audiowide', cursive;
   color: white;
   font-size: 1em;
@@ -72,7 +72,7 @@ form section:first-of-type {
   width: 95%;
 }
 
-form section:first-of-type h1{
+form section:first-of-type h1 {
   font-family: 'Montserrat', sans-serif;
   color:white;
   margin: 0;
@@ -81,7 +81,7 @@ form section:first-of-type h1{
   text-transform: none;
   text-align: left;
 }
-form section:first-of-type p{
+form section:first-of-type p { 
   font-family: 'Montserrat', sans-serif;
   color:white;
   margin: 0;
@@ -96,14 +96,14 @@ form section:nth-of-type(2) {
     width: 95%;
 }
 
-form section:nth-of-type(2) h1{
+form section:nth-of-type(2) h1 {
     font-family: 'Montserrat', sans-serif;
     color:white;
     margin: 0;
     padding: 0.5em;
     font-size: 1em;
 }
-form section:nth-of-type(2) p{
+form section:nth-of-type(2) p {
     font-family: 'Montserrat', sans-serif;
     color:white;
     margin: 0;
@@ -172,7 +172,7 @@ form section:nth-of-type(2) p{
   
   /* When the checkbox is checked, add a blue background */
   .container input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: #007500;
   }
   
   /* Create the checkmark/indicator (hidden when not checked) */
@@ -202,7 +202,9 @@ form section:nth-of-type(2) p{
 
   /* button styling */
   button {
-    background-color: #4CAF50;
+    background-color: #007500;
+    font-family: 'Audiowide', cursive;
+    text-transform: uppercase;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -210,7 +212,7 @@ form section:nth-of-type(2) p{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin-top: 1em;
     cursor: pointer;
   }
   /* footer styling */

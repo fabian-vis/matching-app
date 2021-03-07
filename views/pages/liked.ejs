@@ -15,23 +15,17 @@
             <h1>People you Liked</h1>
             <h3>Filter</h3>
         </section> 
-        <section>
-            <h1>Hier komen de namen</h1>
-            <button>remove?</button>
-        </section>  
-            
+
         <section>
             <ul>
                 <% personen.forEach(function(persoon) { %>
                 <li>
-                    <%= persoon.persoon %>
-                    <button data-id="<%=persoon._id%>">Verwijder</button>
+                    <h1><%= persoon.persoon %></h1>
+                    <button data-id="<%=persoon._id%>">Remove</button>
                 </li>
                 <% });%>
             </ul>
-        </section>
-        <section>
-        </section>
+        </section>  
     </main>
     <script src="https://use.fontawesome.com/0b90345e46.js"></script>
     <footer>
