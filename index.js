@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require('express')
-const port = 8000
+const port = process.env.PORT||8000
 const bodyParser = require("body-parser")
 const MongoClient = require('mongodb').MongoClient
 const ObjectID = require('mongodb').ObjectID
@@ -45,8 +45,6 @@ function main() {
           })
         })
       })
-    
-     
     // als er op de submit button word geklikt worden de geselecteerde personen naar de database gestuurd.
       app.post('/liked', (req, res) => {
         let likes;
@@ -61,7 +59,7 @@ function main() {
         })
         Promise.all(promises) 
           .then(results => {
-              res.redirect('/')
+              res.redirect('/liked')
             })
             .catch(error => console.error(error))
     })
