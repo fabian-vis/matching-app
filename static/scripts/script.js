@@ -12,11 +12,3 @@ function verwijderLike(klikevent) {
         if (tekst === 'Gelukt') window.location.reload()
     })
 }
-/*
-    fetch(url) -> server -> response -> text/json/xml/whatever
-        methods: standaard GET, ook POST, PUT, DELETE
-    
-    fetch(url, {
-        method: "DELETE"
-    })
-*/

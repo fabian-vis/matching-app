@@ -1,19 +1,18 @@
-require("dotenv").config();
+require('dotenv').config();
 const express = require('express')
 const port = process.env.PORT||8000
-const bodyParser = require("body-parser")
+const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 const ObjectID = require('mongodb').ObjectID
-const path = require("path");
+const path = require('path');
 
 const { MONGO_USER, MONGO_PASS, MONGO_URI, MONGO_DB } = process.env;
 
 let persoon = {
-  voornaam: "Fabian", achternaam:"Vis", liked:[]
+  voornaam: 'Fabian', achternaam:'Vis', liked:[]
 }
 
 main();
-
 function main() {
   MongoClient
     .connect(`mongodb+srv://${MONGO_USER}:${MONGO_PASS}@${MONGO_URI}/${MONGO_DB}?retryWrites=true&w=majority`, {
@@ -22,12 +21,11 @@ function main() {
     })
     .then((connection) => {
       const app = express()
-
       const db = connection.db('projecttech')
       const personenCollection = db.collection('personen')
 
-      app.set("view engine", "ejs");
-      app.set("views", path.join(__dirname, "views"));
+      app.set('view engine', 'ejs');
+      app.set('views', path.join(__dirname, 'views'));
       app.use(bodyParser.urlencoded({extended: true}))
       app.use(express.static('static'))
       
@@ -48,7 +46,7 @@ function main() {
     // als er op de submit button word geklikt worden de geselecteerde personen naar de database gestuurd.
       app.post('/liked', (req, res) => {
         let likes;
-        if (typeof req.body.personen === "string") {
+        if (typeof req.body.personen === 'string') {
           likes = [req.body.personen]
         }
         else {
@@ -75,7 +73,7 @@ function main() {
 
     app.delete('/delete', (req, res) => {
       // Maakt van de query string een officeel mongodb object id, anders verwijdert mongodb de persoon niet
-      db.collection('personen').deleteOne({"_id":new ObjectID(req.query.id)})
+      db.collection('personen').deleteOne({'_id':new ObjectID(req.query.id)})
       .then((result) => {
         console.log(result)
         res.send('Gelukt')
@@ -85,7 +83,7 @@ function main() {
     
 
       app.use(function (req, res, next) {
-        res.status(404).send("Error 404")
+        res.status(404).send('Error 404')
       });
       
       
