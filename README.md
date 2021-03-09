@@ -1,5 +1,8 @@
 # Matching-app
-this project is matching app for gamers to get matched with other gamers that match their preferences.
+Hello, my name is Fabian Vis and i am a Communication and Multimedia student at the Hogeschool van Amsterdam.
+The purpose of this app is to help gamers find people to game with that match their preferences. They are also able to add interesting people to a list to get a better overview.
+
+Check out the app i created: https://matching-feature.herokuapp.com/
 
 # What do you need?
 
@@ -41,7 +44,7 @@ Or you can start the server with nodemon:
 ```npm run watch```
 
 # Contributers
-Fabian Vis
+Fabian Vis || fabianvis988@gmail.com
 
 # License
 MIT
