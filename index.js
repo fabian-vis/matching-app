@@ -54,14 +54,14 @@ function main() {
           })
         })
       })
-    // als er op de submit button word geklikt worden de geselecteerde personen naar de database gestuurd.
+      // als er op de submit button word geklikt worden de geselecteerde personen naar de database gestuurd.
       app.post('/liked', (req, res) => {
         let likes;
         // wanneer req.body.personen een string is wordt het in een array gezet
         if (typeof req.body.personen === 'string') {
           likes = [req.body.personen]
         }
-        // als het dus geen string is maar een array met gelikete personen
+        // wanneer het wel een array is.
         else {
           likes = req.body.personen
         }
