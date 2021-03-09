@@ -4,6 +4,10 @@ The purpose of this app is to help gamers find people to game with that match th
 
 Check out the app i created: https://matching-feature.herokuapp.com/
 
+# My job story
+
+**When** i like a person because i find that person interesting **i want** to find this person in a overview **so that** i have a clear overview of people I want to play games with. 
+
 # What do you need?
 
 You need to have NodeJS and NPM installed.
