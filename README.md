@@ -52,3 +52,7 @@ Fabian Vis || fabianvis988@gmail.com
 
 # License
 MIT
+
+# Resources
+
+Connect to MongoDB. (z.d.). Connect to MongoDB. Geraadpleegd op 10 maart 2021, van https://docs.mongodb.com/guides/server/drivers/
